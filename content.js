@@ -1,5 +1,3 @@
-str = "test"
-
 function get_data(site_url, callback) {
   $.get(
         "https://rewordify.com/rwweb.php",
@@ -14,22 +12,20 @@ function extract_article(page_html) {
 
 
 
-
-
-
 /* TODO
 - Extract url
 - Request HTML from rewordify
 - Extract article content
 - Display article content
+- badge update with score
 */
 
 chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        if (request.message === "click") {
-            console.log(str);
+    function(message, sender, sendResponse) {
+        if (message.text === "click") {
+            console.log("run");
             chrome.runtime.sendMessage({
-                "message": "new_tab",
+                "text": "new_tab",
                 "url": str
             });
 
