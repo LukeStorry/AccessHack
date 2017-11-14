@@ -1,13 +1,3 @@
-/* TODO
-- Extract url
-- Request HTML from rewordify
-- Extract article content
-- Display article content
-- badge update with score
-*/
-
-
-
 // Uses Rewordify to simplify website
 function get_data(site_url, callback) {
     $.get(
@@ -22,27 +12,25 @@ function extract_article(page_html) {
 }
 
 
+function extract_title(page_html) {
+  return $('<div>' + page_html + '</div>').find("#article > div.hide-on-mobile > header > div.content__header.tonal__header > div > div > h1").html()
+}
 
 
 chrome.runtime.onMessage.addListener(
     function(message, sender, sendResponse) {
         if (message.text === "click") {
             var site_url = window.location.href;
+            alert("running on ".concat(site_url));
             var readscore = score(document.body.innerHTML);
-            var score_string = (Math.round(readscore*10)/10).toString();
-            alert("This page has a reading score of: ".concat(score_string));
+            alert("This page has a reading score of:".concat((Math.round(readscore*10)/10).toString()));
             get_data(site_url, function(page_html) {
-                console.log(page_html)
-                article = extract_article(page_html);
-                // output article
-                //$('#text').append(article)
-            });
-
-
-            get_data(site_url, function(page_html) {
-                // alert(page_html)
-                article = extract_article(page_html);
-                // alert(article)
+                var title = extract_title(page_html);
+                var article = extract_article(page_html);
+                //$('#head').append(title);
+                //$('#text').append(article);
+                alert(title);
+                alert(article);
             });
         }
     }

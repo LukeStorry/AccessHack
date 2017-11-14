@@ -11,4 +11,5 @@ chrome.browserAction.onClicked.addListener(function(tab) {
         });
     });
 });
-chrome.browserAction.setBadgeText({text: '12.4'});
+
+// chrome.browserAction.setBadgeText({text: '12.4'});
