@@ -21,16 +21,15 @@ chrome.runtime.onMessage.addListener(
     function(message, sender, sendResponse) {
         if (message.text === "click") {
             var site_url = window.location.href;
-            alert("running on ".concat(site_url));
+            //alert("running on ".concat(site_url));
             var readscore = score(document.body.innerHTML);
             alert("This page has a reading score of:".concat((Math.round(readscore*10)/10).toString()));
             get_data(site_url, function(page_html) {
                 var title = extract_title(page_html);
                 var article = extract_article(page_html);
-                //$('#head').append(title);
-                //$('#text').append(article);
-                alert(title);
-                alert(article);
+                document.body.innerHTML = "out.html";
+                $('#head').append(title);
+                $('#text').append(article);
             });
         }
     }
