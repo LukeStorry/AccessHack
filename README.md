@@ -1,5 +1,5 @@
-# Accessibility Hack
-A 6 hour hackathon organised by CSS
+# simple_read
+English-Simplification Chrome Addon for CSS's Accessibility Hackathon
 
 ---
 
