@@ -7,6 +7,7 @@ A 6 hour hackathon organised by CSS
 Website Text-Simplification and Summarisation Chrome Extension.
 
 ### Todo:
-- [] Chrome Extension
-- [] Translation to BasicEnglish
-- [] Text Summarisation
+-[ ] Make basic Chrome Extension
+-[ ] JS script for BasicEnglish "translation"
+-[ ] 
+-[ ] Text Summarisation?
