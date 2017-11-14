@@ -1,18 +1,18 @@
 function score(input) {
-	var all_words = input.trim().match(/\b(\w+)\b/g)
-
+	var all_words = input.trim().match(/\b(\w+)\b/g);
 	var sentence_count =  input.trim().match(/[^\r\n.!?]+(:?(:?\r\n|[\r\n]|[.!?])+|$)/gi).length;
 	var word_count = all_words.length;
-	var difficult_word_count = 0
-     
+	var difficult_word_count = 0;
+    for (word of all_words) {
+        if (! common_words.includes(word)){
+            difficult_word_count += 1;
+        }
+    }
 	var difficult_word_ratio = difficult_word_count / word_count
 	var score= 15.79*difficult_word_ratio + 0.0496*word_count/sentence_count
 
-	return score
+	return score;
 }
-
-var str = "This is a test. test test test yesss";
-alert(score(str));
 
 common_words = [
   "a",
@@ -2303,10 +2303,10 @@ common_words = [
   "sin",
   "since",
   "sing",
+  "sip",
   "singer",
   "single",
   "sink",
-  "sip",
   "sir",
   "sis",
   "sissy",
