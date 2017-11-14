@@ -1,3 +1,5 @@
+str = "test"
+
 function get_data(site_url, callback) {
   $.get(
         "https://rewordify.com/rwweb.php",
@@ -11,14 +13,7 @@ function extract_article(page_html) {
 }
 
 
-var site_url = window.location.href;
-alert(site_url)
 
-get_data(site_url, function(page_html) {
-  alert(page_html)
-  article = extract_article(page_html);
-  alert(article)
-});
 
 
 
@@ -28,3 +23,24 @@ get_data(site_url, function(page_html) {
 - Extract article content
 - Display article content
 */
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        if (request.message === "click") {
+            console.log(str);
+            chrome.runtime.sendMessage({
+                "message": "new_tab",
+                "url": str
+            });
+
+            var site_url = window.location.href;
+            alert(site_url)
+
+            get_data(site_url, function(page_html) {
+              alert(page_html)
+              article = extract_article(page_html);
+              alert(article)
+            });
+        }
+    }
+);
