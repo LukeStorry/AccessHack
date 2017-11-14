@@ -1,7 +1,4 @@
-function score(input) {
-    var span = document.createElement('span');
-    span.innerHTML=input;
-    text = span.textContent || span.innerText;
+function score(text) {
 
 	var all_words = text.trim().match(/\b(\w+)\b/g);
 	var sentence_count =  text.trim().match(/[^\r\n.!?]+(:?(:?\r\n|[\r\n]|[.!?])+|$)/gi).length;

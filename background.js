@@ -7,18 +7,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     }, function(tabs) {
         var activeTab = tabs[0];
         chrome.tabs.sendMessage(activeTab.id, {
-            "message": "click"
+            "text": "click"
         });
     });
 });
-
-
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        if (request.message === "new_tab") {
-            chrome.tabs.create({
-                "url": request.url
-            });
-        }
-    }
-);
