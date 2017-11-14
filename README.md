@@ -1,12 +1,7 @@
-# simple_read
-English-Simplification Chrome Addon, came 1st place in the CSS's Accessibility Hackathon.
+# Simple_Read
+
+English-Simplification Chrome Extension, using [Rewordify](rewordify.com) and the Dale–Chall Readability Formula.
+
+1st place entry in the CSS's 6-hour Accessibility Hackathon.
 
 ---
-
-
-
-
----
-### Usage
-
-[Install ACAO dev extension] (https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en)
