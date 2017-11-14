@@ -13,26 +13,25 @@ function extract_article(page_html) {
 
 
 function extract_title(page_html) {
-  return $('<div>' + page_html + '</div>').find("#article > div.hide-on-mobile > header > div.content__header.tonal__header > div > div > h1").html()
+    return $('<div>' + page_html + '</div>').find("#article > div.hide-on-mobile > header > div.content__header.tonal__header > div > div > h1").html()
 }
 
 
 chrome.runtime.onMessage.addListener(
-    function(message, sender, sendResponse) {
-        if (message.text === "click") {
-            var site_url = window.location.href;
-            //alert("running on ".concat(site_url));
-            get_data(site_url, function(page_html) {
-
-                var readscore_before = score(document.body.innerHTML);
+function(message, sender, sendResponse) {
+    if (message.text === "click") {
+        var site_url = window.location.href;
+        alert("running on ".concat(site_url));
+        var readscore_before = (Math.round(score(document.body.innerHTML) * 10) / 10).toString();
+        get_data(site_url, function(page_html) {
                 var title = extract_title(page_html);
                 var article = extract_article(page_html);
-                var readscore_after = score(article);
-                alert("Reading score :".concat((Math.round(readscore*10)/10).toString()));
-                alert(article)
-                out = " <h1> ".append(title).append(" </hl> <p>").append(article);
-                document.body.innerHTML = out;
-            });
-        }
-    }
+                var readscore_after = (Math.round(score(article) * 10) / 10).toString();
+                var score_status = "Reading score: from ".concat(readscore_before).concat(" to ").concat(readscore_after);
+            // alert(article)
+            out = score_status.concat("\n\n <h1> ").concat(title).concat(" </hl> \n \n ").concat(article);
+            document.body.innerHTML = out;
+        });
+}
+}
 );
