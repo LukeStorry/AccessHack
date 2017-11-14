@@ -22,14 +22,16 @@ chrome.runtime.onMessage.addListener(
         if (message.text === "click") {
             var site_url = window.location.href;
             //alert("running on ".concat(site_url));
-            var readscore = score(document.body.innerHTML);
-            alert("This page has a reading score of:".concat((Math.round(readscore*10)/10).toString()));
             get_data(site_url, function(page_html) {
+
+                var readscore_before = score(document.body.innerHTML);
                 var title = extract_title(page_html);
                 var article = extract_article(page_html);
-                document.body.innerHTML = "out.html";
-                $('#head').append(title);
-                $('#text').append(article);
+                var readscore_after = score(article);
+                alert("Reading score :".concat((Math.round(readscore*10)/10).toString()));
+                alert(article)
+                out = " <h1> ".append(title).append(" </hl> <p>").append(article);
+                document.body.innerHTML = out;
             });
         }
     }
