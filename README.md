@@ -11,3 +11,10 @@ English-Simplification Chrome Addon for CSS's Accessibility Hackathon
 - [ ] View text in readable popup
 - [x] JS script for BasicEnglish "translation"
 - [ ] Text Summarisation?
+
+
+
+---
+### Usage
+
+[Install ACAO dev extension] (https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en)
